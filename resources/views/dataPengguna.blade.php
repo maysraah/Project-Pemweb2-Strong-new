@@ -58,37 +58,44 @@
     .btn-group-spacing .btn {
         margin-right: 5px;
     }
+
+     /* Responsiveness for table */
+     .table {
+        width: 100%;
+    }
+
+    @media (max-width: 767px) {
+        #sidebar.responsive {
+            left: 0;
+        }
+    
+        #content.responsive {
+        margin-left: 0;
+        }
+    
+        #sidebarCollapse {
+        display: block;
+        }
+    }
+
+     /* Contoh CSS tambahan */
+    .responsive {
+        transition: all 0.3s;
+    } 
     </style>
 </head>
 <body>
-<div class="row">
-    <div class="col-8 col-md-3 bg-light">
-    <p class="box2">Menu Admin</p>
-        <table class="margin" style="margin-left:auto;margin-right:auto">
-            <tr>
-                <td><a href="{{ route('admin.materi') }}">Tabel Untuk Materi</a>
-                <hr size="2" width="90%" color="black">
-                </td>
-            </tr>
-            <tr>
-                <td><a href="{{ route('admin.kuis') }}">Tabel Untuk Soal</a>
-                <hr size="2" width="90%" color="black">
-                </td>
-            </tr>
-            <tr>
-                <td><a href="{{ route('admin.nilai') }}">Tabel Untuk Nilai Siswa</a>
-                <hr size="2" width="90%" color="black">
-                </td>
-            </tr>
-            <tr>
-                <td><a href="{{ route('admin.dataPengguna') }}">Tabel Untuk Pengguna</a>
-                <hr size="2" width="90%" color="black">
-                </td>
-            </tr>
-        </table>
-        <p class="box3">
-    </div>
-
+    <div class="row">
+        <div class="col-12 col-md-3 bg-light">
+            <p class="box2">Menu Admin</p>
+            <div class="list-group">
+                <a href="{{ route('admin.materi') }}" class="list-group-item">Tabel Untuk Materi</a>
+                <a href="{{ route('admin.kuis') }}" class="list-group-item">Tabel Untuk Soal</a>
+                <a href="{{ route('admin.nilai') }}" class="list-group-item">Tabel Untuk Nilai Siswa</a>
+                <a href="{{ route('admin.dataPengguna') }}" class="list-group-item">Tabel Untuk Pengguna</a>
+            </div>
+        </div>
+        <div class="col-12 col-md-9">
             <div class="col py-3">
                 <nav class="navbar navbar-expand-lg bg-light">
                     <div class="container-fluid">
@@ -131,7 +138,7 @@
                         <a href="{{ route('admin.dataPengguna.create') }}" class="btn btn-success">Tambah Data</a>
                         <table class="table">
                             <thead>
-                                <tr>
+                                <tr align="center">
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Email</th>
@@ -144,13 +151,13 @@
                                     $n= 1;
                                 @endphp
                                 @foreach ($users as $user)
-                                <tr>
+                                <tr align="center">
                                     <th scope="row">{{ $n }}</th>
                                     <td>{{ $user->nama }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ ($user->is_admin)== 1 ? "Admin" : "Siswa" }}</td>
                                     <td>
-                                        <div style="display: flex; gap: 10px;">
+                                        <div style="display: flex; gap: 10px;" align="center">
                                             <a href="{{ route('admin.dataPengguna.edit', $user->id) }}" class="btn btn-primary">Edit</a>
                                             <form action="{{ route('admin.dataPengguna.destroy',$user->id) }}" method="POST" class="d-inline">
                                                 @csrf
