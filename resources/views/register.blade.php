@@ -6,12 +6,8 @@
         <title>Register</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <style>
-            body {
-                background-color: rgb(150, 165, 250);
-            }
-
             .container-md {
-                background-color: whitesmoke;
+                background-color: rgb(181, 191, 245);
                 padding: 20px;
                 border-radius: 7px;
             }
@@ -28,7 +24,7 @@
                                 @csrf
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control @error('namaInput') is-invalid @enderror" id="namaInput" name="namaInput" value="{{ old('namaInput') }}" placeholder="nama">
+                                    <input type="text" class="form-control @error('namaInput') is-invalid @enderror" id="namaInput" name="namaInput" value="{{ old('namaInput') }}" placeholder="Nama">
                                     @error('namaInput')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -37,7 +33,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control @error('nisInput') is-invalid @enderror" id="nisInput" name="nisInput" value="{{ old('nisInput') }}" placeholder="nis">
+                                    <input type="text" class="form-control @error('nisInput') is-invalid @enderror" id="nisInput" name="nisInput" value="{{ old('nisInput') }}" placeholder="NIS">
                                     @error('nisInput')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -46,7 +42,7 @@
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control @error('emailInput') is-invalid @enderror" id="emailInput" name="emailInput" value="{{ old('emailInput') }}" placeholder="email">
+                                    <input type="text" class="form-control @error('emailInput') is-invalid @enderror" id="emailInput" name="emailInput" value="{{ old('emailInput') }}" placeholder="Email">
                                     @error('emailInput')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -55,24 +51,22 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control @error('usernameInput') is-invalid @enderror" id="usernameInput" name="usernameInput" value="{{ old('usernameInput') }}" placeholder="username">
-                                    @error('usernameInput')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>                            
-                                    @enderror
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <input type="password" class="form-control @error('passwordInput') is-invalid @enderror" id="passwordInput" name="passwordInput" placeholder="password">
+                                    <input type="password" class="form-control @error('passwordInput') is-invalid @enderror" id="passwordInput" name="passwordInput" placeholder="Password">
                                     @error('passwordInput')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>                            
                                     @enderror
                                 </div>
-                                
 
+                                <div class="mb-3">
+                                    <input type="password" class="form-control @error('passwordInput_confirmation') is-invalid @enderror" id="passwordInput_confirmation" name="passwordInput_confirmation" placeholder="Konfirmasi Password">
+                                    @error('passwordInput')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>                            
+                                    @enderror
+                                </div>
                                 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                           </form>

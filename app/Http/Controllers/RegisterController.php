@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
 
 class RegisterController extends Controller
 {
@@ -15,12 +18,14 @@ class RegisterController extends Controller
     {
         $validator = $request->validate([
             'namaInput' => 'required',
+            'nisInput' => 'required|numeric',
             'emailInput' => 'required|email',
             'passwordInput' => 'required|min:8|confirmed',
         ]);
 
         $query = User::create([
-            'name' => $request->namaInput,
+            'nama' => $request->namaInput,
+            'nis' => $request->nisInput,
             'email' => $request->emailInput,
             'password' => Hash::make($request->passwordInput)
         ]);

@@ -15,19 +15,24 @@
             padding: 20px;
         }
         .container-md {
-                width: 800px;
-                background-color: rgb(255, 244, 94);
-                padding: 20px;
-                border-radius: 7px;
-                text-align: center;
+            width: 800px;
+            background-color: rgb(255, 244, 94);
+            padding: 20px;
+            border-radius: 7px;
+            text-align: center;
             }
 
-            .btn-primary {
-                width: 200px;
-                background-color: rgb(221, 219, 219);
-                border: rgb(221, 219, 219);
-                color: black;
-            }
+        .btn-primary {
+            width: 200px;
+            background-color: rgb(221, 219, 219);
+            border: rgb(221, 219, 219);
+            color: black;
+        }
+        .aa {
+            color: black;
+            text-decoration: none;
+            color: blue;
+        }
     </style>
 </head>
 <body>
@@ -40,15 +45,19 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{{ route('home.index') }}">Home</a>
-                    @can('admin')
-                    <a class="nav-link" href="{{ route('homeAdmin.index') }}">Admin</a>
-                    @endcan
+                    @php
+                        if (Auth::user()->is_admin == 1) {
+                    @endphp
+                        <a class="nav-link" aria-current="page" href="{{ route('admin.admin.index') }}">Admin</a>
+                    @php
+                        }
+                    @endphp
                     <a class="nav-link" href="#">Tentang</a>
                 </div>
             </div>
-            {{-- <div class="user me-3">
-                Halo, {{ Auth::user()->name }}
-            </div> --}}
+            <div class="user me-3">
+                Halo, {{ Auth::user()->nama }}
+            </div>
             <div class="logout">
                 <a href="{{ route('login.logout') }}" class="btn btn-danger">Logout</a>
             </div>
@@ -56,25 +65,26 @@
     </nav>
 
     <div>
-        <h1 align="center">Selamat Datang, User!</h1>
+        <p></p>
+        <p></p>
+        <h1 align="center">Selamat Datang, {{ Auth::user()->nama }} !</h1>
         <div class="container">
-            <p align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p align="center"></p>
         </div>
 
         <div class="container-md">
             <p><b>Petunjuk</b></p>
-            <p>Klik button Materi untuk mulai belajar</p>
-            <p>Klik button Kuis untuk mulai kuis</p>
+            <p>Klik button <b>Materi</b> untuk mulai belajar</p>
+            <p>Klik button <b>Kuis</b> untuk mulai kuis</p>
         </div><br>
 
         <div class="container-md">
             <p><b>Tujuan Pembelajaran</b></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p>Setelah mempelajari materi pada website ini, kalian mampu memahami dan menerapkan bahasa pemrograman python dasar untuk membuat data.</p>
         </div><br>
 
         <div align="center">
-            <button type="submit" class="btn btn-primary"><b>Materi</b></button>
+            <button type="submit" class="btn btn-primary"><a class="aa" href="{{ route('halMateri.index') }}"><b>Materi</b><a></button>
         </div><br>
         <div align="center">
             <button type="submit" class="btn btn-primary"><b>Kuis</b></button>
